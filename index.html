@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><body>
+<h1>My GPT</h1>
+<input id="msg" placeholder="pucho kuch...">
+<button onclick="send()">Send</button>
+<div id="ans"></div>
+<script>
+async function send(){
+ let m=document.getElementById('msg').value;
+ let r=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m})});
+ let d=await r.json();
+ document.getElementById('ans').innerText=d.reply;
+}
+</script>
+</body></html>
